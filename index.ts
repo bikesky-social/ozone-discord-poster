@@ -41,7 +41,9 @@ async function postWebhook(event: ModEventView, isReport: boolean) {
   );
 
   message.setURL(
-    `${ozoneUrl}/reports?quickOpen=${encodeURIComponent(event.subject.uri ?? event.subject.did ?? "")}`
+    `${ozoneUrl}/reports?quickOpen=${encodeURIComponent(
+      event.subject.uri ?? event.subject.did ?? ""
+    )}`
   );
 
   if (event.subject.$type === "com.atproto.admin.defs#repoRef") {
@@ -54,9 +56,9 @@ async function postWebhook(event: ModEventView, isReport: boolean) {
       subjectProfile.data.description ? subjectProfile.data.description : ""
     );
   } else if (event.subject.$type === "com.atproto.repo.strongRef") {
-    // post
-    message.setColor("#3498DB");
     if (event.subject.uri.includes("app.bsky.feed.post")) {
+      // post
+      message.setColor("#3498DB");
       message.setTitle(`post by ${event.subjectHandle}`);
       const posts = await agent.getPosts({ uris: [event.subject.uri] });
       if (posts.data.posts.length > 0) {
@@ -86,7 +88,7 @@ Bun.serve({
   },
 });
 
-console.log('server is listening');
+console.log("server is listening");
 
 while (true) {
   const response = await agent.tools.ozone.moderation.queryEvents(
