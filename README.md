@@ -38,6 +38,14 @@ The easiest way to deploy this service is to use the "Deploy to Render" button b
 <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" />
 </a>
 
+### Docker
+
+This service is available on Docker Hub at [bikesky/ozone-discord-poster](https://hub.docker.com/r/bikesky/ozone-discord-poster). You can run it with the following command:
+
+```sh
+docker run -p 3000:3000 --env-file .env bikesky/ozone-discord-poster
+```
+
 ## Development
 
 To install dependencies:
