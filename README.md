@@ -22,7 +22,7 @@ BSKY_LABELER_PASSWORD="<replace with password>"
 BSKY_LABELER_DID="<replace with the bluesky labeler's did>"
 
 # the URL to the labeler's Ozone server
-OZONE_URL="<https://ozone.example.com>"
+OZONE_URL="<replace with Ozone server URL eg. https://ozone.example.com>"
 
 # how many seconds to wait before checking for more reports 
 POLLING_SECONDS=60
