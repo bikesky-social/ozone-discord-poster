@@ -6,7 +6,7 @@ services:
     plan: free
     envVars:
       - key: BUN_VERSION
-        value: 1.2.2
+        value: 1.2.3
       - key: DISCORD_WEBHOOK_URL
         sync: false
       - key: BSKY_LABELER_USERNAME
