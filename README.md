@@ -10,7 +10,7 @@ The web service is configured using environment variables. The expected environm
 
 ```sh
 # the Discord webhook for the channel to post to
-DISCORD_WEBHOOK_URL="<replace with the discord webhook url>"
+DISCORD_WEBHOOK_URL="<replace with the Discord webhook url>"
 
 # the Bluesky labeler's handle
 BSKY_LABELER_USERNAME="<replace with username>"
@@ -19,7 +19,7 @@ BSKY_LABELER_USERNAME="<replace with username>"
 BSKY_LABELER_PASSWORD="<replace with password>"
 
 # the DID of the Bluesky labeler
-BSKY_LABELER_DID="<replace with the bluesky labeler's did>"
+BSKY_LABELER_DID="<replace with the Bluesky labeler's did>"
 
 # the URL to the labeler's Ozone server
 OZONE_URL="<replace with Ozone server URL eg. https://ozone.example.com>"
