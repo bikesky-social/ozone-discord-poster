@@ -6,7 +6,7 @@ Finally - notifications for your Ozone reports!
 
 ## Configuration
 
-The expected environment variables are:
+The web service is configured using environment variables. The expected environment variables are:
 
 ```sh
 # the Discord webhook for the channel to post to
