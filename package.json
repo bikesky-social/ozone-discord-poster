@@ -1,0 +1,20 @@
+{
+  "name": "ozone-discord-poster",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch --hot index.ts --inspect",
+    "build": "bun install",
+    "start": "bun index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@atproto/api": "^0.14.4",
+    "discord-webhook-node": "^1.1.8"
+  }
+}
