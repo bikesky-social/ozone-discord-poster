@@ -3,15 +3,37 @@ import { AtpAgent } from "@atproto/api";
 import { sleep } from "bun";
 import type { ModEventView } from "@atproto/api/dist/client/types/tools/ozone/moderation/defs";
 
-async function ozoneDiscordPoster() {
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL as string;
-  const bskyLabelerUsername = process.env.BSKY_LABELER_USERNAME as string;
-  const bskyLabelerPassword = process.env.BSKY_LABELER_PASSWORD as string;
-  const bskyLabelerDid = process.env.BSKY_LABELER_DID as string;
-  const pollingSeconds = Number(process.env.POLLING_SECONDS);
-  const ozoneUrl = process.env.OZONE_URL as string;
+var validUrl = require("valid-url");
 
-  const webhook = webhookUrl ? new Webhook(webhookUrl) : undefined;
+function getRequiredEnvVarOrThrow(key: string) {
+  const result = process.env[key];
+
+  if (result) {
+    return result;
+  } else {
+    throw `required environment variable is not defined: ${key}`;
+  }
+}
+
+function getRequiredUriEnvVarOrThrow(key: string) {
+  const result = getRequiredEnvVarOrThrow(key);
+
+  if (validUrl.isUri(result)) {
+    return result;
+  } else {
+    throw `environment variable ${key} is not a valid URL. please enter a valid URL (eg. https://ozone.example.com)`;
+  }
+}
+
+async function ozoneDiscordPoster() {
+  const webhookUrl = getRequiredUriEnvVarOrThrow("DISCORD_WEBHOOK_URL");
+  const bskyLabelerUsername = getRequiredEnvVarOrThrow("BSKY_LABELER_USERNAME");
+  const bskyLabelerPassword = getRequiredEnvVarOrThrow("BSKY_LABELER_PASSWORD");
+  const bskyLabelerDid = getRequiredEnvVarOrThrow("BSKY_LABELER_DID");
+  const ozoneUrl = getRequiredUriEnvVarOrThrow("OZONE_URL");
+  const pollingSeconds = Number(getRequiredEnvVarOrThrow("POLLING_SECONDS"));
+
+  const webhook = new Webhook(webhookUrl);
   const agent = new AtpAgent({ service: "https://bsky.social" });
 
   try {
