@@ -1,6 +1,6 @@
 # Ozone Discord Poster
 
-A Typescript web service that sends Ozone reports to a Discord webhook. the server queries your Bluesky labeler's reports at an interval that you choose and sends any new reports of accounts, posts and lists to a Discord webhook.
+A Typescript web service that sends Ozone reports to a Discord webhook. The server queries your Bluesky labeler's reports at an interval that you choose and sends any new reports about accounts, posts and lists to a Discord webhook.
 
 Finally - notifications for your Ozone reports!
 
