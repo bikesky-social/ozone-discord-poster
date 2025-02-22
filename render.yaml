@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ozone discord poster
+    runtime: node
+    autoDeploy: true
+    plan: free
+    envVars:
+      - key: BUN_VERSION
+        value: 1.2.2
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
+      - key: BSKY_LABELER_USERNAME
+        sync: false
+      - key: BSKY_LABELER_PASSWORD
+        sync: false
+      - key: BSKY_LABELER_DID
+        sync: false
+      - key: OZONE_URL
+        sync: false
+      - key: POLLING_SECONDS
+        sync: false
+    buildCommand: bun i --frozen-lockfile
+    startCommand: bun run start
+    healthCheckPath: /health
+version: "1"
