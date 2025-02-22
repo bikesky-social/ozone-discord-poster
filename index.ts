@@ -19,6 +19,7 @@ try {
     identifier: bskyLabelerUsername,
     password: bskyLabelerPassword,
   });
+  console.log(`authenticated labeler account`);
 } catch (error) {
   console.log(`failed to log into labeler: ${JSON.stringify(error)}`);
 }
@@ -84,6 +85,8 @@ Bun.serve({
     return new Response("404!");
   },
 });
+
+console.log('server is listening');
 
 while (true) {
   const response = await agent.tools.ozone.moderation.queryEvents(
